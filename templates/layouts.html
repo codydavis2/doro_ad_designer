@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Layouts — Doro Ad Designer</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Doro Ad Designer</div>
+  <div class="topbar-actions">
+    <a href="/" class="btn btn-secondary">← Back to Editor</a>
+  </div>
+</header>
+
+<main class="gallery-main">
+  <h1>Browse Layouts</h1>
+  <p class="hint gallery-intro">100 layout styles, all generated algorithmically — no two look alike. Click any one to use it for your ad.</p>
+  <div id="gallery-grid" class="gallery-grid"></div>
+</main>
+
+<script src="{{ url_for('static', filename='js/layouts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/canvasRenderer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/layoutGallery.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doro Ad Designer</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Doro Ad Designer</div>
+  <div class="topbar-actions">
+    <a href="/layouts" class="btn btn-secondary">🖼 Browse Layouts</a>
+    <button id="btn-my-designs" class="btn btn-secondary">📁 My Designs</button>
+    <button id="btn-save" class="btn btn-secondary">💾 Save</button>
+    <button id="btn-download" class="btn btn-primary">⬇️ Download PNG</button>
+  </div>
+</header>
+
+<main class="layout">
+
+  <section class="panel form-panel">
+
+    <div class="field-group">
+      <h2>1. Your Details</h2>
+
+      <label for="input-headline">Business / Room Name</label>
+      <input id="input-headline" type="text" maxlength="150" placeholder="e.g. The Lost Vault" value="The Lost Vault">
+
+      <label for="input-tagline">Tagline</label>
+      <input id="input-tagline" type="text" maxlength="150" placeholder="e.g. Can you escape in 60 minutes?" value="Can you escape in 60 minutes?">
+
+      <label for="input-badge">Badge Text (optional)</label>
+      <input id="input-badge" type="text" maxlength="150" placeholder="e.g. NEW ROOM or 20% OFF">
+
+      <label for="input-cta">Call to Action</label>
+      <input id="input-cta" type="text" maxlength="150" placeholder="e.g. BOOK NOW" value="BOOK NOW">
+
+      <label for="input-contact">Phone / Website</label>
+      <input id="input-contact" type="text" maxlength="150" placeholder="e.g. www.lostvaultescapes.com">
+    </div>
+
+    <div class="field-group">
+      <h2>2. Photo</h2>
+      <label class="upload-drop" id="upload-drop">
+        <span id="upload-drop-text">Click to upload a photo</span>
+        <input id="input-image" type="file" accept="image/png, image/jpeg, image/webp" hidden>
+      </label>
+      <button id="btn-remove-image" class="btn btn-text" hidden>Remove photo</button>
+    </div>
+
+    <div class="field-group">
+      <h2>3. Colors</h2>
+      <div class="color-row">
+        <label for="input-color-primary">Primary
+          <input id="input-color-primary" type="color" value="#1b1035">
+        </label>
+        <label for="input-color-accent">Accent
+          <input id="input-color-accent" type="color" value="#ff5722">
+        </label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <h2>4. Ad Size</h2>
+      <select id="input-size">
+        <option value="1080x1080">Square — Social Post (1080x1080)</option>
+        <option value="1080x1350" selected>Portrait — Social Post (1080x1350)</option>
+        <option value="1080x1920">Story — Full Screen (1080x1920)</option>
+        <option value="1200x630">Wide — Facebook/Web Banner (1200x630)</option>
+      </select>
+    </div>
+
+  </section>
+
+  <section class="panel preview-panel">
+    <div class="preview-toolbar">
+      <h2>Live Preview</h2>
+      <div class="preview-toolbar-actions">
+        <button id="btn-reset-positions" class="btn btn-text">↺ Reset Positions</button>
+        <button id="btn-shuffle" class="btn btn-primary btn-shuffle">🎲 Try a Different Layout</button>
+      </div>
+    </div>
+    <div id="layout-label" class="layout-label"></div>
+    <div class="canvas-frame">
+      <div class="canvas-stage">
+        <canvas id="ad-canvas" width="1080" height="1350"></canvas>
+        <div id="canvas-overlay"></div>
+      </div>
+    </div>
+    <p class="hint">Tip: click "Try a Different Layout" as many times as you like. Drag any piece of text or your photo to move it, and drag the photo's corner handle to resize it. Double-click your photo to zoom in and reposition it inside its frame.</p>
+  </section>
+
+</main>
+
+<div id="modal-designs" class="modal-overlay" hidden>
+  <div class="modal">
+    <div class="modal-header">
+      <h2>My Designs</h2>
+      <button id="btn-close-modal" class="btn btn-text">✕</button>
+    </div>
+    <div id="designs-list" class="designs-list"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="{{ url_for('static', filename='js/layouts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/canvasRenderer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/canvasEditor.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
